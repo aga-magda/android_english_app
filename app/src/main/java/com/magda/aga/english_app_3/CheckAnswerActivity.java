@@ -1,5 +1,7 @@
 package com.magda.aga.english_app_3;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.view.View;

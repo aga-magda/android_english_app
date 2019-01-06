@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -56,28 +57,24 @@ public class MainActivity extends BaseActivity {
         questionList = db.getAllEnglishWords(); // question is english word
         questionCountTotal = questionList.size(); // number of questions
 
-        // SharedPreferences - get current question
-        restoreData();
+        // Shared preferences - questionCounter
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        this.questionCounter = sharedPref.getInt("questionCounter", 0);
+
+        showNextQuestion();
 
     }
 
-
-
+    // Shared preferences - questionCounter
     @Override
     protected void onPause(){
         super.onPause();
-        // SharedPreferences - save current question
-        saveData();
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("questionCounter", questionCounter);
+        editor.commit();
     }
-
-
-
-    @Override
-    protected void onStart(){
-        showNextQuestion();
-        super.onStart();
-    }
-
 
     // onClick method from View.OnClickListener
     // call methods after click on specific button

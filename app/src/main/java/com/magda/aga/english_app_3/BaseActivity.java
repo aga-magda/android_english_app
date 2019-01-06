@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +39,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected static EnglishWord currentQuestion;
     protected static DatabaseHelper db;
     protected static PolishWord correctAnswer;
-    private SharedPreferences preferences;
 
 
     @Override
@@ -46,24 +47,22 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         // singleton - in any activity passing the context and use the singleton method
         db = DatabaseHelper.getInstance(this);
-
-        preferences = getSharedPreferences("questionCounter", 0);
-
     }
 
 
 
     /****************************** COMMON METHODS ******************************/
 
-    protected void saveData() {
-        SharedPreferences.Editor preferencesEditor = preferences.edit();
-        preferencesEditor.putInt("questionCounter", questionCounter);
-        preferencesEditor.commit();
-    }
+    // Shared preferences - questionCounter
+    @Override
+    protected void onDestroy(){
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
 
-    protected void restoreData(){
-        SharedPreferences preferences = getSharedPreferences("questionCounter", 0);
-        questionCounter = preferences.getInt("currentQuestion", questionCounter);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("questionCounter", questionCounter);
+        editor.commit();
+
+        super.onDestroy();
     }
 
 
