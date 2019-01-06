@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574b</color>
+    <color name="colorAccent">#d81b60</color>
+    <color name="colorButtonGrey">#E0E0E0</color>
+    <color name="colorToolbarGrey">#E0E0E0</color>
+    <color name="colorButtonBlue">#90d5f5</color>
+    <color name="colorButtonKnownWord">#8c1cbb44</color>
+    <color name="colorButtonUncertainedWord">#82f9c300</color>
+    <color name="colorButtonUnknownWord">#8cf72a03</color>
+    <color name="textViewQuestionColor">#022387</color>
+    <color name="textViewAnswerColor">#5a5a60</color>
+    <color name="buttonTextCheckColor">#ffffff</color>
+    <color name="colorToastWrongAnswer">#8cf72a03</color>
+    <color name="colorToastRightAnswer">#27ca50</color>
+    <color name="colorToastInformation">#9e9a99</color>
+
+</resources>
