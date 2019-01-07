@@ -1,11 +1,8 @@
 package com.magda.aga.english_app_3;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,6 +21,7 @@ public class MainActivity extends BaseActivity {
     private Button buttonCheck;
     private PolishWord answer1, answer2, answer3;
     private ArrayList<PolishWord> answers = new ArrayList<PolishWord>();
+    private Button [] buttonsMenu = new Button[5];
 
 
     /****************************** HANDLING APPLICATION ******************************/
@@ -36,6 +34,12 @@ public class MainActivity extends BaseActivity {
 
         // adding toolbar - method from BaseActivity
         addToolbar();
+        toolbar.getMenu().findItem(R.id.MENU1).setVisible(false);
+        toolbar.getMenu().findItem(R.id.MENU2).setVisible(false);
+        toolbar.getMenu().findItem(R.id.MENU3).setVisible(false);
+        toolbar.getMenu().findItem(R.id.MENU4).setVisible(false);
+        toolbar.getMenu().findItem(R.id.MENU5).setVisible(false);
+        toolbar.getMenu().findItem(R.id.MENU_NEXT_QUESTION).setVisible(false);
 
         // binding the xml view with java using its id
         textViewQuestion = findViewById(R.id.TEXT_VIEW_QUESTION);
@@ -108,7 +112,6 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
-
 
     /****************************** METHODS USE ABOVE ******************************/
 

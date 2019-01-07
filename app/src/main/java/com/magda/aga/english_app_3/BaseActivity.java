@@ -1,27 +1,19 @@
 package com.magda.aga.english_app_3;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,7 +21,10 @@ import java.util.Date;
 import java.util.List;
 
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener, Toolbar.OnMenuItemClickListener {
+
+
+    /****************************** VARIABLES ******************************/
 
     // variables using in other Activities
     protected static boolean isGoodAnswer;
@@ -39,7 +34,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected static EnglishWord currentQuestion;
     protected static DatabaseHelper db;
     protected static PolishWord correctAnswer;
-
+    protected static int wordsType;
+    protected static List<EnglishWord> wordList;
+    protected static Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,13 +141,53 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     // adding Toolbar to view with data
     protected void addToolbar(){
-        DateFormat df = new SimpleDateFormat("E dd.M");
+        DateFormat df = new SimpleDateFormat("E dd.MM");
         Date timeNow = Calendar.getInstance().getTime();
         String reportTime = df.format(timeNow);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setSubtitle(reportTime);
         toolbar.inflateMenu(R.menu.menu);
+
+        toolbar.setOnMenuItemClickListener(this);
+    }
+
+
+    // dropdown menu click handler
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.MENU1:
+                wordsType = 1;
+                openActivity(ShowWordsActivity.class);
+                return true;
+            case R.id.MENU2:
+                wordsType = 2;
+                openActivity(ShowWordsActivity.class);
+                return true;
+            case R.id.MENU3:
+                wordsType = 3;
+                openActivity(ShowWordsActivity.class);
+                return true;
+            case R.id.MENU4:
+                wordsType = 4;
+                openActivity(ShowWordsActivity.class);
+                return true;
+            case R.id.MENU5:
+                wordsType = 5;
+                openActivity(ShowWordsActivity.class);
+                return true;
+            case R.id.MENU_NEXT_QUESTION:
+                wordsType = 0;
+                openActivity(MainActivity.class);
+                return true;
+        }
+        return false;
     }
 
 }
+
+
+
+
+

@@ -456,6 +456,132 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /****************************** OTHER METHODS ******************************/
 
+    // getting all bad_answer
+    public List<EnglishWord> getAllBadAnswer(){
+        List<EnglishWord> englishWords = new ArrayList<EnglishWord>();
+        String selectQuery = "SELECT * FROM " + TABLE_EN_WORD + " WHERE " + BAD_ANSWER + " = 1" ;
+
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                EnglishWord englishWord = new EnglishWord();
+                englishWord.setId(c.getLong(c.getColumnIndex(ID)));
+                englishWord.setEn_word(c.getString(c.getColumnIndex(EN_WORD)));
+
+                // adding to englishwords list
+                englishWords.add(englishWord);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
+        return englishWords;
+    }
 
 
+    // getting all good_answers
+    public List<EnglishWord> getAllGoodAnswer(){
+        List<EnglishWord> englishWords = new ArrayList<EnglishWord>();
+        String selectQuery = "SELECT * FROM " + TABLE_EN_WORD + " WHERE " + BAD_ANSWER + " = 2" ;
+
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                EnglishWord englishWord = new EnglishWord();
+                englishWord.setId(c.getLong(c.getColumnIndex(ID)));
+                englishWord.setEn_word(c.getString(c.getColumnIndex(EN_WORD)));
+
+                // adding to englishwords list
+                englishWords.add(englishWord);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
+        return englishWords;
+    }
+
+
+    // getting all unknown words
+    public List<EnglishWord> getAllUnknownWords(){
+        List<EnglishWord> englishWords = new ArrayList<EnglishWord>();
+        String selectQuery = "SELECT * FROM " + TABLE_EN_WORD + " WHERE " + UNKNOWN_WORD + " = 1" ;
+
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                EnglishWord englishWord = new EnglishWord();
+                englishWord.setId(c.getLong(c.getColumnIndex(ID)));
+                englishWord.setEn_word(c.getString(c.getColumnIndex(EN_WORD)));
+
+                // adding to englishwords list
+                englishWords.add(englishWord);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
+        return englishWords;
+    }
+
+
+    // getting all known words
+    public List<EnglishWord> getAllKnownWords(){
+        List<EnglishWord> englishWords = new ArrayList<EnglishWord>();
+        String selectQuery = "SELECT * FROM " + TABLE_EN_WORD + " WHERE " + KNOWN_WORD + " = 1" ;
+
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                EnglishWord englishWord = new EnglishWord();
+                englishWord.setId(c.getLong(c.getColumnIndex(ID)));
+                englishWord.setEn_word(c.getString(c.getColumnIndex(EN_WORD)));
+
+                // adding to englishwords list
+                englishWords.add(englishWord);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
+        return englishWords;
+    }
+
+
+    // getting all uncertained words
+    public List<EnglishWord> getAllUncertainedWords(){
+        List<EnglishWord> englishWords = new ArrayList<EnglishWord>();
+        String selectQuery = "SELECT * FROM " + TABLE_EN_WORD + " WHERE " + UNCERTAINED_WORD + " = 1" ;
+
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            do {
+                EnglishWord englishWord = new EnglishWord();
+                englishWord.setId(c.getLong(c.getColumnIndex(ID)));
+                englishWord.setEn_word(c.getString(c.getColumnIndex(EN_WORD)));
+
+                // adding to englishwords list
+                englishWords.add(englishWord);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
+        return englishWords;
+    }
 }

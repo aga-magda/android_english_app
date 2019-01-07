@@ -1,7 +1,5 @@
 package com.magda.aga.english_app_3;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CheckAnswerActivity extends BaseActivity {
+
+    /****************************** VARIABLES ******************************/
 
     private TextView textViewMainTranslation;
     private TextView textViewOtherTranslation;
@@ -23,6 +23,8 @@ public class CheckAnswerActivity extends BaseActivity {
     private List<PolishWord> otherPolishTranslations = new ArrayList<PolishWord>();
 
 
+    /****************************** HANDLING APPLICATION ******************************/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class CheckAnswerActivity extends BaseActivity {
 
         // adding toolbar - method from BaseActivity
         addToolbar();
+        toolbar.getMenu().findItem(R.id.MENU_NEXT_QUESTION).setVisible(false);
 
         // binding the xml view with java using its id
         textViewMainTranslation = (TextView) findViewById(R.id.TEXT_VIEW_MAIN_TRANSLATION);
@@ -83,6 +86,8 @@ public class CheckAnswerActivity extends BaseActivity {
         }
     }
 
+
+    /****************************** METHODS USE ABOVE ******************************/
 
     // if there is a question left open MainActivity, if not - close app
     private void showNextQuestion(){

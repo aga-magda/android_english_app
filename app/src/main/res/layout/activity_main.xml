@@ -8,9 +8,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        layout="@layout/toolbar"/>
 
     <Button
         android:id="@+id/BUTTON_OPTION0"
